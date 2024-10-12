@@ -7,7 +7,7 @@ import SignUpScreen from './screens/SignUpScreen';
 const Stack = createNativeStackNavigator();
 
 const linking = {
-  prefixes: ['https://myapp.com', 'myapp://'],
+  prefixes: ['localhost:8081'],
   config: {
     screens: {
       SignIn: 'signin',

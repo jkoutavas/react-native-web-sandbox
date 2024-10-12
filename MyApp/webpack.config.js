@@ -43,4 +43,7 @@ module.exports = {
       __DEV__: JSON.stringify(true), // Sets __DEV__ for development mode
     }),
   ],
+  devServer: {
+    historyApiFallback: true, // This is the key to handle client-side routing
+  },
 };
