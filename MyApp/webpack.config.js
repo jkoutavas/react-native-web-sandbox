@@ -11,6 +11,17 @@ const imageLoaderConfiguration = {
   },
 };
 
+const svgLoaderConfiguration = {
+  test: /\.svg$/i,
+  issuer: /\.[jt]sx?$/,
+  use: [
+    {
+      loader: '@svgr/webpack',
+      options: {typescript: true, dimensions: false},
+    },
+  ],
+};
+
 module.exports = {
   entry: './index.web.js', // Entry point for the web build
   output: {
@@ -36,6 +47,7 @@ module.exports = {
         },
       },
       imageLoaderConfiguration,
+      svgLoaderConfiguration,
     ],
   },
   plugins: [
