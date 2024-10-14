@@ -11,6 +11,16 @@ const imageLoaderConfiguration = {
   },
 };
 
+const babelLoaderConfiguration = {
+  include: [
+    path.resolve(
+      __dirname,
+      // Important!
+      'node_modules/@react-native/assets-registry/registry',
+    ),
+  ],
+};
+
 module.exports = {
   entry: './index.web.js', // Entry point for the web build
   output: {
@@ -36,6 +46,7 @@ module.exports = {
         },
       },
       imageLoaderConfiguration,
+      babelLoaderConfiguration,
     ],
   },
   plugins: [
