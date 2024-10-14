@@ -11,14 +11,13 @@ const imageLoaderConfiguration = {
   },
 };
 
-const svgLoaderConfiguration = {
-  test: /\.svg$/i,
-  issuer: /\.[jt]sx?$/,
-  use: [
-    {
-      loader: '@svgr/webpack',
-      options: {typescript: true, dimensions: false},
-    },
+const babelLoaderConfiguration = {
+  include: [
+    path.resolve(
+      __dirname,
+      // Important!
+      'node_modules/@react-native/assets-registry/registry',
+    ),
   ],
 };
 
@@ -47,7 +46,7 @@ module.exports = {
         },
       },
       imageLoaderConfiguration,
-      svgLoaderConfiguration,
+      babelLoaderConfiguration,
     ],
   },
   plugins: [

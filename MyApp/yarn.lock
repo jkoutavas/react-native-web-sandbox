@@ -2359,7 +2359,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native/assets-registry@npm:0.75.4":
+"@react-native/assets-registry@npm:0.75.4, @react-native/assets-registry@npm:^0.75.4":
   version: 0.75.4
   resolution: "@react-native/assets-registry@npm:0.75.4"
   checksum: bf30525b83aa17423144ac100c649ad9c1b2f5cd10d3daeda80aa0a3c8097b2be25d5573924acacd6973dd65b64b6ade23dc18b8273ee52960d71037afe2eaf8
@@ -3639,6 +3639,7 @@ __metadata:
     "@babel/preset-env": ^7.20.0
     "@babel/preset-react": ^7.25.7
     "@babel/runtime": ^7.20.0
+    "@react-native/assets-registry": ^0.75.4
     "@react-native/babel-preset": ^0.75.4
     "@react-native/eslint-config": 0.75.4
     "@react-native/metro-config": 0.75.4
