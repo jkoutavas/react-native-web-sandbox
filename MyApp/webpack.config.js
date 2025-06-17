@@ -8,11 +8,12 @@ const appDirectory = path.resolve(__dirname);
 const compileNodeModules = [
   // Add every react-native package that needs compiling
   'react-native-gesture-handler',
+  'react-native-vector-icons',
 ].map(moduleName => path.resolve(appDirectory, `node_modules/${moduleName}`));
 
 const babelLoaderConfiguration = {
   test: /\.(js|ts|tsx)$/,
-  exclude: /node_modules/,
+  // exclude: /node_modules/, // This was preventing specified node_modules (like vector-icons) from being transpiled.
   // Add every directory that needs to be compiled by Babel during the build.
   include: [
     path.resolve(__dirname, 'src'),
@@ -57,6 +58,12 @@ const imageLoaderConfiguration = {
   },
 };
 
+const fontLoaderConfiguration = {
+  test: /\.ttf$/,
+  loader: 'url-loader', // or directly file-loader
+  include: path.resolve(__dirname, 'node_modules/react-native-vector-icons'),
+};
+
 const cssLoaderConfiguration = {
   test: /\.css$/,
   use: [
@@ -93,13 +100,14 @@ module.exports = {
       imageLoaderConfiguration,
       svgLoaderConfiguration,
       cssLoaderConfiguration,
+      fontLoaderConfiguration,
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public/index.html'),
     }),
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HotModuleReplacementPlugin(), // Removed as it's automatically applied when devServer.hot is true (as per the warning)
     new webpack.DefinePlugin({
       // See: https://github.com/necolas/react-native-web/issues/349
       // eslint-disable-next-line @typescript-eslint/naming-convention
